@@ -39,12 +39,18 @@ This project aimed to build, deploy, and secure a web application on Microsoft A
 1) Azure Web App Creation:
 
    - Explanation: Created an Azure web app service to host the application.
-   - Steps: Followed the Azure instructions to create a web app, including choosing a name, subscription, resource group, and runtime stack.
+   - Steps: On the Azure portal, search "App Services" and create the service. For the details section, I used my current subscription service, a previously created Resource Group (RedTeam), and a Runtime stack of PHP 8.2. For the App Service Plan, I used a Linux server and the basic B1 server configurations.
+     <img width="1245" alt="image" src="https://github.com/user-attachments/assets/2eab982d-7c66-43ce-8489-2147ff757970">
+   
 
-2) Domain Selection:
+2) Domain Selection and Mapping to Azure:
 
-   - Explanation: Selected a domain name for the web application.
-   - Steps: Used GoDaddy Domain Service to create and register a custom domain name (carloncyber.xyz).
+   - Explanation: Selected a domain name for the web application on GoDaddy.
+   - Step 1: Used GoDaddy Domain Service to create and register a custom domain name (carloncyber.xyz).
+     ![image](https://github.com/user-attachments/assets/d898a038-86a5-4a4e-b84e-3175ab4bc81c)
+   - Step 2: Is to map the custom domain to the current Azure app service. Under the App Services portal, I updated my new custom domain to the "Custom Domain" menu; Selecting the options for Domain Provider as "other domain services", The TLS/SSL certificate as "App Service Managed", and SSl type as "SNI SSL". This is where I added my custom domain as carloncyber.xyz and produced my Domain Validation records.
+     <img width="1148" alt="image" src="https://github.com/user-attachments/assets/5db12815-6a86-4489-871e-1cd8bdbc33e8">
+
 
 3) Container Deployment:
 
