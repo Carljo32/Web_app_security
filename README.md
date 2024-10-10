@@ -40,27 +40,32 @@ This project aimed to build, deploy, and secure a web application on Microsoft A
 
    - Explanation: Created an Azure web app service to host the application.
    - Steps: On the Azure portal, search "App Services" and create the service. For the details section, I used my current subscription service, a previously created Resource Group (RedTeam), and a Runtime stack of PHP 8.2. For the App Service Plan, I used a Linux server and the basic B1 server configurations.
-     <img width="1245" alt="image" src="https://github.com/user-attachments/assets/2eab982d-7c66-43ce-8489-2147ff757970">
+        <img width="1245" alt="image" src="https://github.com/user-attachments/assets/2eab982d-7c66-43ce-8489-2147ff757970">
    
 
 2) Domain Selection and Mapping to Azure:
 
    - Explanation: Selected a domain name for the web application on GoDaddy.
    - Step 1: Used GoDaddy Domain Service to create and register a custom domain name (carloncyber.xyz).
-     ![image](https://github.com/user-attachments/assets/d898a038-86a5-4a4e-b84e-3175ab4bc81c)
+        ![image](https://github.com/user-attachments/assets/d898a038-86a5-4a4e-b84e-3175ab4bc81c)
    - Step 2: Is to map the custom domain to the current Azure app service. Under the App Services portal, I updated my new custom domain to the "Custom Domain" menu; Selecting the options for Domain Provider as "other domain services", The TLS/SSL certificate as "App Service Managed", and SSl type as "SNI SSL". This is where I added my custom domain as carloncyber.xyz and produced my Domain Validation records.
-     <img width="1148" alt="image" src="https://github.com/user-attachments/assets/5db12815-6a86-4489-871e-1cd8bdbc33e8">
-
+       <img width="1148" alt="image" src="https://github.com/user-attachments/assets/5db12815-6a86-4489-871e-1cd8bdbc33e8">
+   - Step 3: Vist GoDaddy profile and update the DNS records for validation. Under the "Domains" portal, review and update the current DNS records to edit the A record and TXT record with the information that Azure supplied.
+       <img width="1105" alt="image" src="https://github.com/user-attachments/assets/b1e6f81c-636a-4622-a41c-47b2f83d17ed">
+   - Step 4: Return to Azure and validate the custom domain has been validated, either by readding the custom domain or refreshing the page. 
 
 3) Container Deployment:
 
-   - Explanation: (If applicable) Deployed a containerized application to the web app for a consistent environment.
-   - Steps: Followed Azure instructions for container deployment, specifying the container registry and container image details.
+   - Explanation: Used the Azure Cloud shell to deploy a containerized application to the web app for a consistent environment.
+   - Step 1: Visit the hub.docker container website and use the container cyberxsecurity/project1-apachewebserver container. On the Azure portal, click the Cloud shell icon in the upper right corner and proceed to use the command "az webapp config container set --name <name of your webapp> --resource-group <name of your resource group> --docker-custom-image-name <container-name> --enable-app-service-storage -t", while personalizing the command that is specific to my website. To verify that the container had been added and running correctly, run the command "az webapp config container show --name <name of webapp> --resource-group <name of your resource group>". Here is what should be produced on the webpage as this container is just a template:
+        <img width="842" alt="image" src="https://github.com/user-attachments/assets/4873bd94-169d-4a2f-8d48-096d719fa558">
 
 4) Web Application Design:
 
    - Explanation: Designed and developed the custom web application functionality.
-   - Steps: Used a chosen web development framework to build the application locally, test it, and then deploy the code to the Azure web app.
+   - Step 1: In order to update the webpage, I needed to SSH into the container. Go to the Web App portal and click on "SSH" in the toolbar. Once the shell opens, I needed to visit the correct directories that contain the html files (/var/ww/html). Using the command, nano index.html, I was able to inspect the html elements and update the container template to my desired information, such as; my name, email address, linkedIn, and two "blog" topics.
+        <img width="1052" alt="image" src="https://github.com/user-attachments/assets/ec538196-7a8d-4e79-9081-7aa36414d2ce">
+ 
 
 5) Securing the Application:
    
