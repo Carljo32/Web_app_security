@@ -65,6 +65,9 @@ This project aimed to build, deploy, and secure a web application on Microsoft A
    - Explanation: Designed and developed the custom web application functionality.
    - Step 1: In order to update the webpage, I needed to SSH into the container. Go to the Web App portal and click on "SSH" in the toolbar. Once the shell opens, I needed to visit the correct directories that contain the html files (/var/ww/html). Using the command, nano index.html, I was able to inspect the html elements and update the container template to my desired information, such as; my name, email address, linkedIn, and two "blog" topics.
         <img width="1052" alt="image" src="https://github.com/user-attachments/assets/ec538196-7a8d-4e79-9081-7aa36414d2ce">
+   - Here is the final result of the application design:
+        <img width="879" alt="image" src="https://github.com/user-attachments/assets/c1b83402-b878-4613-b8e8-64c143c70ce0">
+
  
 
 5) Securing the Application:
