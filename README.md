@@ -14,7 +14,7 @@ This project aimed to build, deploy, and secure a web application on Microsoft A
 
 ### TOOLS USED
 - Microsoft Azure Portal
-- Web development framework (e.g., React, Angular, or ASP.NET) (if applicable)
+- Web development framework from Docker
 - Tools for generating self-signed certificates (openssl)
 - CA root authority certicate
 - Go Daddy domain services (for creating custom domain - carloncyber.xyz)
@@ -34,8 +34,7 @@ This project aimed to build, deploy, and secure a web application on Microsoft A
    10. Analyze and configure WAF rules
    11. Analyze and remediate security center recommendations
        
-### Detailed Steps with Screenshots
-
+### Detailed Steps 
 1) Azure Web App Creation:
 
    - Explanation: Created an Azure web app service to host the application.
@@ -68,19 +67,28 @@ This project aimed to build, deploy, and secure a web application on Microsoft A
    - Here is the final result of the application design:
         <img width="879" alt="image" src="https://github.com/user-attachments/assets/c1b83402-b878-4613-b8e8-64c143c70ce0">
 
- 
-
 5) Securing the Application:
    
    a) Key Vault and Certificates:
    - Explanation: Created an Azure Key Vault to securely store cryptographic keys and secrets used by the application.
-   - Steps: Followed Azure instructions to create a Key Vault and store either a self-signed certificate generated with OpenSSL (for testing) or an app service managed certificate (for production).
+   - Steps 1: On the Azure portal, search for "Key vaults" and select the "create tab". Under this section, I will be using the preselected subscription group and resource group as using in previous steps. In the configuration steps, under "Access Policies" I will select the USER (Carl) with the predetermined permissions. 
 
    b) Binding an SSL Certificate:
    - Explanation: Bound the chosen SSL certificate to the web app to enable secure HTTPS communication.
-   - Steps: Downloaded the certificate from Key Vault and uploaded it to the web app's TLS/SSL settings.
+   - Step 1: Now that the Key Vault is created, I will use the Cloud shell and the tool OpenSSL in order to create a self signed certicate by running this command, "  openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout <privatekeyname.key> -out <certificatename.crt> -addext "extendedKeyUsage=serverAuth". After running the command, I needed to fill out several questions about the certificate, such as; Country, State, Organization name, etc... Here is a sample image: 
+        <img width="562" alt="image" src="https://github.com/user-attachments/assets/57874a59-27f9-4817-b802-95e45c780793">
+   - Step 2: After the certicate is created, I had to create a compatible format so that it is Azure compatible. By using OpenSSL, I created the new PFX format using the command: "openssl pkcs12 -export -out <new_certificatename.pfx> -inkey <keyname.key> -in <certificename.crt>". This new certificate has been added to my web application and now needs to be added to Azure in the PFX format.
+   - Step 3: Download the PFX certicate and visit the Azure "Key vaults" portal and select "certificates." From this menu, select "Generate/Import" and complete the certicate questions and upload the PFX cert file.
+        <img width="1162" alt="image" src="https://github.com/user-attachments/assets/9c5ebc97-234b-42ee-8e22-4e6f6ca3963a">
+   - Step 4: After upload, visit the "Web App" portal and select certicates. This is where I imported the PFX certicate from the key vault.
+         ![image](https://github.com/user-attachments/assets/76918aaf-8629-48e5-89b9-f9d739851446)
 
-   c) Azure Front Door (Optional):
+   - Step 5: After uploading the self-signed certicate, I had to visit the "custom domains" portal and bind my newly uploaded certicate to my domain/webpage. After clicking, "Add binding", the TLS/SSL binding settings required my certificate and TLS/SSL type, which I selcted as SNI SSL. Even after completing this step, my webpage is still not considered secure, so the next step is use Azure and create a "Managed certificate".
+   - Step 6: Under the "Web app" portal, I returned back to "Certificates" and clicked on add to create and update my TLS/SSL binding. Under this section, I needed to validate my imported cert and then revisit "Custom domains" to "add binding". This will update my TLS/SSL certificate for my webpage to become secure.
+         <img width="1240" alt="image" src="https://github.com/user-attachments/assets/a5adc9a0-5c4a-4aeb-928e-7c564b536d1e">
+
+     
+   c) Azure Front Door:
    - Explanation: (If applicable) Configured an Azure Front Door for a scalable and secure entry point to the application.
    - Steps: Followed Azure instructions to create a Front Door instance and define backend pools and routing rules.
 
