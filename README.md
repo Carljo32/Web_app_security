@@ -30,9 +30,8 @@ This project aimed to build, deploy, and secure a web application on Microsoft A
    6. Create a self-signed certificate
    7. Import and bind a self-signed certificate to a web app
    8. Create and bind an app service managed certificate
-   9. Create a front door
-   10. Analyze and configure WAF rules
-   11. Analyze and remediate security center recommendations
+   9. Configure and analyze a WAF and its rules
+   10. Analyze and remediate security center recommendations
        
 ### Detailed Steps 
 1) Azure Web App Creation:
@@ -87,19 +86,19 @@ This project aimed to build, deploy, and secure a web application on Microsoft A
    - Step 6: Under the "Web app" portal, I returned back to "Certificates" and clicked on add to create and update my TLS/SSL binding. Under this section, I needed to validate my imported cert and then revisit "Custom domains" to "add binding". This will update my TLS/SSL certificate for my webpage to become secure.
          <img width="1240" alt="image" src="https://github.com/user-attachments/assets/a5adc9a0-5c4a-4aeb-928e-7c564b536d1e">
 
-     
-   c) Azure Front Door:
-   - Explanation: (If applicable) Configured an Azure Front Door for a scalable and secure entry point to the application.
-   - Steps: Followed Azure instructions to create a Front Door instance and define backend pools and routing rules.
-
-   d) Web Application Firewall (WAF):
-   - Explanation: Analyzed and configured the Web Application Firewall (WAF) rule sets to protect the application from common attacks.
+   c) Web Application Firewall (WAF) on Azure Front Door:
+   - Explanation: Configured and analyzed the Web Application Firewall (WAF) rule sets to protect the application from common attacks.
    - Enabled relevant rule sets based on the application's needs.
-   - Created custom WAF rules to address specific security concerns (optional).
+   - Created custom WAF rules to address specific security concerns.
+     - Step 1: Create a WAF for the Azure Front Door by searching on the Azure portal for "Web Application Firewall policies WAF". Under the WAF portal, I selected create and used Regional WAF for the policy group.
+     - Step 2: After the WAF resource is created, I analyzed the rule set and saw what vulnerabilities the WAF will protect against.
+     - Step 3: Based on the assignment, I created custom rules for the WAF in order to only accept traffic from locations in the United States, Canada, and Australia. This was done by selecting the custom rules in the WAF portal and simply adding the custom rule and configuring an allow list of the three previously stated countries.
+          ![image](https://github.com/user-attachments/assets/d94bdf34-c55d-4221-9380-8052aa7c7b30)
 
-   e) Azure Security Center:
+   D) Azure Security Center:
    - Explanation: Analyzed recommendations from Azure Security Center to identify and address potential security vulnerabilities.
-   - Steps: Accessed Security Center, reviewed recommendations, prioritized them based on risk, and implemented remediation steps as needed.
+   - Steps: In order to access and understand the security center recommendations, I revisted the "Web App" portal and selected the "Microsoft Defender for Cloud". This dashboard provided various security recommendations in which I reviewed and prioritized them based on risk, and ultimately implemented remediation steps as needed. Here is a sample screenshot of the dashboard:          ![image](https://github.com/user-attachments/assets/4295a63a-f10f-478b-89e6-3ff088cf2b62)
 
-Every screenshot should have some text explaining what the screenshot is about.
+
+
 
