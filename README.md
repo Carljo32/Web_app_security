@@ -1,4 +1,4 @@
-# Building and Securing a Web Application via Microsoft Azure
+# Building and Securing a Web Application on Microsoft Azure
 
 ## OBJECTIVE
 
