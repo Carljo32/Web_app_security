@@ -79,29 +79,29 @@ Key Achievements:
 
 5) Securing the Application:
    
-   a) Key Vault and Certificates:
+   A) Key Vault and Certificates:
    - Explanation: Created an Azure Key Vault to securely store cryptographic keys and secrets used by the application.
    - Steps 1: On the Azure portal, search for "Key vaults" and select the "create tab". Under this section, I will be using the preselected subscription group and resource group as using in previous steps. In the configuration steps, under "Access Policies" I will select the USER (Carl) with the predetermined permissions. 
 
-   b) Binding an SSL Certificate:
+   B) Binding an SSL Certificate:
    - Explanation: Bound the chosen SSL certificate to the web app to enable secure HTTPS communication.
-   - Step 1: Now that the Key Vault is created, I will use the Cloud shell and the tool OpenSSL in order to create a self signed certicate by running this command, "  openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout <privatekeyname.key> -out <certificatename.crt> -addext "extendedKeyUsage=serverAuth". After running the command, I needed to fill out several questions about the certificate, such as; Country, State, Organization name, etc... Here is a sample image: 
+   - Step 1: Now that the Key Vault is created, I will use the Cloud shell and the tool OpenSSL in order to create a self signed certificate by running this command, "  openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout <privatekeyname.key> -out <certificatename.crt> -addext "extendedKeyUsage=serverAuth". After running the command, I needed to fill out several questions about the certificate, such as; Country, State, Organization name, etc... Here is a sample image: 
         <img width="562" alt="image" src="https://github.com/user-attachments/assets/57874a59-27f9-4817-b802-95e45c780793">
-   - Step 2: After the certicate is created, I had to create a compatible format so that it is Azure compatible. By using OpenSSL, I created the new PFX format using the command: "openssl pkcs12 -export -out <new_certificatename.pfx> -inkey <keyname.key> -in <certificename.crt>". This new certificate has been added to my web application and now needs to be added to Azure in the PFX format.
+   - Step 2: After the certificate is created, I had to create a compatible format so that it is Azure compatible. By using OpenSSL, I created the new PFX format using the command: "openssl pkcs12 -export -out <new_certificatename.pfx> -inkey <keyname.key> -in <certificename.crt>". This new certificate has been added to my web application and now needs to be added to Azure in the PFX format.
    - Step 3: Download the PFX certicate and visit the Azure "Key vaults" portal and select "certificates." From this menu, select "Generate/Import" and complete the certicate questions and upload the PFX cert file.
         <img width="1162" alt="image" src="https://github.com/user-attachments/assets/9c5ebc97-234b-42ee-8e22-4e6f6ca3963a">
    - Step 4: After upload, visit the "Web App" portal and select certicates. This is where I imported the PFX certicate from the key vault.
          ![image](https://github.com/user-attachments/assets/76918aaf-8629-48e5-89b9-f9d739851446)
 
-   - Step 5: After uploading the self-signed certicate, I had to visit the "custom domains" portal and bind my newly uploaded certicate to my domain/webpage. After clicking, "Add binding", the TLS/SSL binding settings required my certificate and TLS/SSL type, which I selcted as SNI SSL. Even after completing this step, my webpage is still not considered secure, so the next step is use Azure and create a "Managed certificate".
+   - Step 5: After uploading the self-signed certificate, I had to visit the "custom domains" portal and bind my newly uploaded certificate to my domain/webpage. After clicking "Add binding", the TLS/SSL binding settings required my certificate and TLS/SSL type, which I selcted as SNI SSL. Even after completing this step, my webpage is still not considered secure, so the next step is to use Azure and create a "Managed certificate".
    - Step 6: Under the "Web app" portal, I returned back to "Certificates" and clicked on add to create and update my TLS/SSL binding. Under this section, I needed to validate my imported cert and then revisit "Custom domains" to "add binding". This will update my TLS/SSL certificate for my webpage to become secure.
          <img width="1240" alt="image" src="https://github.com/user-attachments/assets/a5adc9a0-5c4a-4aeb-928e-7c564b536d1e">
 
-   c) Web Application Firewall (WAF) on Azure Front Door:
+   C) Web Application Firewall (WAF) on Azure Front Door:
    - Explanation: Configured and analyzed the Web Application Firewall (WAF) rule sets to protect the application from common attacks.
    - Enabled relevant rule sets based on the application's needs.
    - Created custom WAF rules to address specific security concerns.
-     - Step 1: Create a WAF for the Azure Front Door by searching on the Azure portal for "Web Application Firewall policies WAF". Under the WAF portal, I selected create and used Regional WAF for the policy group.
+     - Step 1: Create a WAF for the Azure Front Door by searching on the Azure portal for "Web Application Firewall policies WAF". Under the WAF portal, I selected "create and used Regional WAF" for the policy group.
      - Step 2: After the WAF resource is created, I analyzed the rule set and saw what vulnerabilities the WAF will protect against.
      - Step 3: Based on the assignment, I created custom rules for the WAF in order to only accept traffic from locations in the United States, Canada, and Australia. This was done by selecting the custom rules in the WAF portal and simply adding the custom rule and configuring an allow list of the three previously stated countries.
           ![image](https://github.com/user-attachments/assets/d94bdf34-c55d-4221-9380-8052aa7c7b30)
