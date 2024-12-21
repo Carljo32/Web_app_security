@@ -1,37 +1,48 @@
-# Building and Securing a Web Application on Microsoft Azure
+# Securing a Cloud-Based Web Application: Azure Deployment and Security Implementation
+##### UCI's Cybersecurity Boot Camp Project #1
 
-## OBJECTIVE
+## OBJECTIVE SUMMARY
 
-This project aimed to build, deploy, and secure a web application on Microsoft Azure. The focus was on implementing various security measures to protect the application from common threats and vulnerabilities. This hands-on experience was designed to deepen understanding of network security, cloud security and defensive strategies.
+The objective of this project was to build, deploy, and secure a web application hosted on Microsoft Azure. The focus was on implementing a range of security measures, including SSL certificates, Web Application Firewalls (WAF), and cloud security configurations, to safeguard the application from common threats. Through this project, I deepened my understanding of cloud security principles, network security, cryptography, and defensive strategies in real-world scenarios.
+### CONCISE PROJECT HIGHLIGHTS
+Key Achievements:
+- Built and hosted a custom web application using Microsoft Azure.
+- Implemented SSL encryption with self-signed and managed certificates.
+- Secured the application using a Web Application Firewall (WAF) and custom security rules.
+- Utilized Azure Security Center to analyze and remediate vulnerabilities.
 
-### SKILLS LEARNED
+### TECHNICAL SKILLS LEARNED
 
-- Understanding of Azure Services: Learned to utilize Azure services like App Service, Key Vault, Front Door, and Security Center.
-- Web Application Security: Gained practical experience in securing web applications with SSL certificates (self signed via openssl and CA authority), Web Application Firewall (WAF), and custom WAF rules.
-- Security Best Practices: Explored security best practices for cloud deployments, including managing secrets and analyzing security recommendations.
-- Development of critical thinking and problem-solving skills in cloud security.
-- Updating DNS records; TXT and A records
+- Understanding of Microsoft Azure services: App Service, Key Vault, Front Door, and Security Center.
+- Hands-on experience in SSL/TLS implementation and certificate management; Self-signed & App service managed.
+- Application of cloud security best practices, including secret management and WAF rule configuration.
+- Enhanced skills in networking, cryptography, and terminal-based development.
 
 ### TOOLS USED
-- Microsoft Azure Portal
-- Web development framework from Docker
-- Tools for generating self-signed certificates (openssl)
-- CA root authority certicate
-- Go Daddy domain services (for creating custom domain - carloncyber.xyz)
+- <b>Cloud Platform</b>: Microsoft Azure (App Service, Key Vault, Security Center, Front Door)
+- <b>Certificate Tools</b>: OpenSSL, CA Root Authority Certificates
+- <b>Domain Management</b>: GoDaddy (custom domain: carloncyber.xyz)
+- <b>Containerization Framework</b>: Docker
 
 
-## STEPS
+## STEPS TAKEN TO COMPLETE THE PROJECT
 ### Summary
-   1. Create an Azure web app
-   2. Create a domain
-   3. Deploy a container on the web app
-   4. Design a custom web app
-   5. Create a Key Vault
-   6. Create a self-signed certificate
-   7. Import and bind a self-signed certificate to a web app
-   8. Create and bind an app service managed certificate
-   9. Configure and analyze a WAF and its rules
-   10. Analyze and remediate security center recommendations
+1. <b>Web Application Setup</b>:
+   - Created an Azure web app and hosted it on a custom domain.
+   - Deployed a Docker container to host the web application.
+   - Designed and customized the web application interface.
+2. <b>SSL Encryption Implementation</b>:
+   - Created a Key Vault to securely manage secrets and certificates.
+   - Generated a self-signed SSL certificate using OpenSSL.
+   - Imported and bound the self-signed certificate to the Azure web app.
+   - Configured and applied an app service-managed certificate for enhanced security.
+3. <b>Advanced Security Features</b>:
+   - Configured Azure Front Door to route traffic and improve security.
+   - Analyzed and applied Web Application Firewall (WAF) rule sets.
+   - Created and tested custom WAF rules to address specific security scenarios.
+4. <b>Security Analysis and Optimization</b>:
+   - Used Azure Security Center to analyze the security posture of the application.
+   - Reviewed and remediated recommendations to align with best practices.
        
 ### Detailed Steps 
 1) Azure Web App Creation:
