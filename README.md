@@ -4,6 +4,7 @@
 ## OBJECTIVE SUMMARY
 
 The objective of this project was to build, deploy, and secure a web application hosted on Microsoft Azure. The focus was on implementing a range of security measures, including SSL certificates, Web Application Firewalls (WAF), and cloud security configurations, to safeguard the application from common threats. Through this project, I deepened my understanding of cloud security principles, network security, cryptography, and defensive strategies in real-world scenarios.
+
 ### CONCISE PROJECT HIGHLIGHTS
 Key Achievements:
 - Built and hosted a custom web application using Microsoft Azure.
@@ -11,14 +12,14 @@ Key Achievements:
 - Secured the application using a Web Application Firewall (WAF) and custom security rules.
 - Utilized Azure Security Center to analyze and remediate vulnerabilities.
 
-### TECHNICAL SKILLS LEARNED
+#### TECHNICAL SKILLS LEARNED
 
 - Understanding of Microsoft Azure services: App Service, Key Vault, Front Door, and Security Center.
 - Hands-on experience in SSL/TLS implementation and certificate management; Self-signed & App service managed.
 - Application of cloud security best practices, including secret management and WAF rule configuration.
 - Enhanced skills in networking, cryptography, and terminal-based development.
 
-### TOOLS USED
+#### TOOLS USED
 - <b>Cloud Platform</b>: Microsoft Azure (App Service, Key Vault, Security Center, Front Door)
 - <b>Certificate Tools</b>: OpenSSL, CA Root Authority Certificates
 - <b>Domain Management</b>: GoDaddy (custom domain: carloncyber.xyz)
