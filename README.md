@@ -25,7 +25,7 @@ Key Achievements:
 - <b>Containerization Framework</b>: Docker
 
 
-## STEPS TAKEN TO COMPLETE THE PROJECT
+## Project Write up
 ### Summary
 1. <b>Web Application Setup</b>:
    - Created an Azure web app and hosted it on a custom domain.
